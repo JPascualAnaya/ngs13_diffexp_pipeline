@@ -19,23 +19,23 @@
 
 # Mapping to reference genome with Tophat
 
-mkdir /root/tophat_${dataset}
-tophat -p 4 -G /data/${transcript_annotation} -o /root/tophat_${dataset} /root/${reference_index} /data/${reads_1} /data/${reads_2}
+mkdir /mnt/tophat_${dataset}
+tophat -p 4 -G /data/${transcript_annotation} -o /mnt/tophat_${dataset} /root/${reference_index} /data/${reads_1} /data/${reads_2}
 
-cd /root/tophat_${dataset}
+cd /mnt/tophat_${dataset}
 mv accepted_hits.bam accepted_hits_${dataset}.bam
 
-samtools sort accepted_hits_${dataset}.bam ${output}/accepted_hits_${dataset}.sorted
-samtools index ${output}/accepted_hits_${dataset}.sorted.bam
+samtools sort accepted_hits_${dataset}.bam accepted_hits_${dataset}.sorted
+samtools index accepted_hits_${dataset}.sorted.bam
 
 # Assembling transcripts
 
-mkdir /root/cufflinks_${dataset}
-cd /root/cufflinks_${dataset}
-cufflinks -o /root/cufflinks_${dataset}/${dataset}_ accepted_hits_${dataset}.bam
+mkdir /mnt/cufflinks_${dataset}
+cd /mnt/cufflinks_${dataset}
+cufflinks -o /mnt/cufflinks_${dataset}/${dataset}_ accepted_hits_${dataset}.bam
 
 # Combine reference annotation file and newly generated annotation file
 
-cuffcompare -o /root/cufflinks_${dataset}/${dataset}_ -s /data/dmel-all-chromosome-r5.51.fasta -CG -r /data/Drosophila_melanogaster.BDGP5.71.gtf /root/cufflinks_${dataset}/transcripts_${dataset}.gtf
+cuffcompare -o /mnt/cufflinks_${dataset}/${dataset}_ -s /mnt/dmel-all-chromosome-r5.51.fasta -CG -r /data/Drosophila_melanogaster.BDGP5.71.gtf /mnt/cufflinks_${dataset}/transcripts_${dataset}.gtf
 
 
