@@ -1,0 +1,7 @@
+dataset=vg1
+reads_1=OREf_SAMm_vg1_CTTGTA_L005_R1_001.fastq
+reads_2=OREf_SAMm_vg1_CTTGTA_L005_R2_001.fastq
+output=dataset
+transcript_annotation=Drosophila_melanogaster.BDGP5.71.gtf
+reference=dmel-all-chromosome-r5.51.fasta
+reference_index=dmel_genome_bowtie2
