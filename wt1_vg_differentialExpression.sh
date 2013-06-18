@@ -2,7 +2,7 @@
 
 # cd /data;
 
-# mkdir /root/Dropbox/fastqc_vg1
+# mkdir /root/Dropbox/fastqc_${dataset}
 
 # /usr/local/share/FastQC/fastqc ${reads_1} ${reads_2} --outdir=/root/Dropbox/fastqc_${dataset}:
 
