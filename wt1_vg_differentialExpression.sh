@@ -20,7 +20,7 @@
 # Mapping to reference genome with Tophat
 
 mkdir /root/tophat_${dataset}
-tophat -p 4 -G /data/${transcript_annotation} -o /root/tophat_${dataset}/${output} /root/${reference_index} /data/${reads_1} /data/${reads_2}
+tophat -p 4 -G /data/${transcript_annotation} -o /root/tophat_${dataset} /root/${reference_index} /data/${reads_1} /data/${reads_2}
 
 cd /root/tophat_${dataset}
 mv accepted_hits.bam accepted_hits_${dataset}.bam
