@@ -8,9 +8,9 @@
 
 # Trimming by quality values
 
-## python /usr/local/share/khmer/sandbox/interleave.py ${reads_1} ${reads_2} > combined_${dataset}.fq;
+# python /usr/local/share/khmer/sandbox/interleave.py ${reads_1} ${reads_2} > combined_${dataset}.fq;
 
-## fastx_trimmer -Q33 -l 70 -i combined_vg1.fq | fastq_quality_filter -Q33 -q 30 -p 50 > combined-trim_${dataset}.fq;
+# fastx_trimmer -Q33 -l 70 -i combined_vg1.fq | fastq_quality_filter -Q33 -q 30 -p 50 > combined-trim_${dataset}.fq;
 
 # Evaluating quality after trimming
 
@@ -19,21 +19,21 @@
 
 # Mapping to reference genome with Tophat
 
-# mkdir /mnt/tophat_${dataset}
-# tophat -p 4 -G /data/${transcript_annotation} -o /mnt/tophat_${dataset} /root/${reference_index} /data/${reads_1} /data/${reads_2}
+mkdir /mnt/tophat_${dataset}
+tophat -p 4 -G /data/${transcript_annotation} -o /mnt/tophat_${dataset} /root/${reference_index} /data/${reads_1} /data/${reads_2}
 
-# cd /mnt/tophat_${dataset}
-# mv accepted_hits.bam accepted_hits_${dataset}.bam
+cd /mnt/tophat_${dataset}
+mv accepted_hits.bam accepted_hits_${dataset}.bam
 
-# samtools sort accepted_hits_${dataset}.bam accepted_hits_${dataset}.sorted
-# samtools index accepted_hits_${dataset}.sorted.bam
+samtools sort accepted_hits_${dataset}.bam accepted_hits_${dataset}.sorted
+samtools index accepted_hits_${dataset}.sorted.bam
 
 # Assembling transcripts
 
-# mkdir /mnt/cufflinks_${dataset}
-# cd /mnt/cufflinks_${dataset}
-# cufflinks -o /mnt/cufflinks_${dataset}/ /mnt/tophat_${dataset}/accepted_hits_${dataset}.bam
-# mv /mnt/cufflinks_${dataset}/transcripts.gtf /mnt/cufflinks_${dataset}/${dataset}_transcripts.gtf
+mkdir /mnt/cufflinks_${dataset}
+cd /mnt/cufflinks_${dataset}
+cufflinks -o /mnt/cufflinks_${dataset}/ /mnt/tophat_${dataset}/accepted_hits_${dataset}.bam
+mv /mnt/cufflinks_${dataset}/transcripts.gtf /mnt/cufflinks_${dataset}/${dataset}_transcripts.gtf
 
 # Combine reference annotation file and newly generated annotation file
 
