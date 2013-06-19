@@ -37,6 +37,6 @@
 
 # Combine reference annotation file and newly generated annotation file
 
-cuffcompare -o /mnt/cufflinks_${dataset}/ -s /data/dmel-all-chromosome-r5.51.fasta -CG -r /data/Drosophila_melanogaster.BDGP5.71.gtf /mnt/cufflinks_${dataset}/${dataset}_transcripts.gtf
+cuffcompare -o /mnt/cufflinks_${dataset}/ -s /root/dmel-all-chromosome-r5.51.fasta -CG -r /data/Drosophila_melanogaster.BDGP5.71.gtf /mnt/cufflinks_${dataset}/${dataset}_transcripts.gtf
 
 
