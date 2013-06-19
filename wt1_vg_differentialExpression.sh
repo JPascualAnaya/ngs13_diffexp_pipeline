@@ -32,10 +32,11 @@
 
 # mkdir /mnt/cufflinks_${dataset}
 # cd /mnt/cufflinks_${dataset}
-# cufflinks -o /mnt/cufflinks_${dataset}/${dataset}_ /mnt/tophat_${dataset}/accepted_hits_${dataset}.bam
+# cufflinks -o /mnt/cufflinks_${dataset}/ /mnt/tophat_${dataset}/accepted_hits_${dataset}.bam
+# mv /mnt/cufflinks_${dataset}/transcripts.gtf /mnt/cufflinks_${dataset}/${dataset}_transcripts.gtf
 
 # Combine reference annotation file and newly generated annotation file
 
-cuffcompare -o /mnt/cufflinks_${dataset}/${dataset}_ -s /mnt/dmel-all-chromosome-r5.51.fasta -CG -r /data/Drosophila_melanogaster.BDGP5.71.gtf /mnt/cufflinks_${dataset}/${dataset}_transcripts.gtf
+cuffcompare -o /mnt/cufflinks_${dataset}/ -s /data/dmel-all-chromosome-r5.51.fasta -CG -r /data/Drosophila_melanogaster.BDGP5.71.gtf /mnt/cufflinks_${dataset}/${dataset}_transcripts.gtf
 
 
